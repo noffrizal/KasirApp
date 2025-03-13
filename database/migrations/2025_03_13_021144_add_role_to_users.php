@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string(config('filament-edit-profile.avatar_column', 'avatar_url'))->nullable();
+            $table->string('role')->nullable();
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(config('filament-edit-profile.avatar_column', 'avatar_url'));
+            $table->dropColumn('role');
         });
     }
 };

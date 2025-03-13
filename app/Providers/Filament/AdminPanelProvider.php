@@ -60,21 +60,19 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugins([
                 FilamentEditProfilePlugin::make()
-                ->setIcon('heroicon-o-user')
-                ->setNavigationGroup('Group Profile')
-                ->shouldShowAvatarForm(
-                    value: true,
-                    directory: 'avatars', // image will be stored in 'storage/app/public/avatars
-                    rules: 'mimes:jpeg,png|max:1024' //only accept jpeg and png files with a maximum size of 1MB
-                )
+                    ->shouldRegisterNavigation(false)
+                    ->shouldShowAvatarForm(
+                        value: true,
+                        directory: 'avatars', // image will be stored in 'storage/app/public/avatars
+                        rules: 'mimes:jpeg,png|max:1024'
+                    )
             ])
             ->userMenuItems([
                 MenuItem::make()
                     ->label('Edit Profile')
-                    ->url(fn (): string => EditProfilePage::getUrl())
+                    ->url(fn(): string => EditProfilePage::getUrl())
                     ->icon('heroicon-m-user-circle')
-                    //If you are using tenancy need to check with the visible method where ->company() is the relation between the user and tenancy model as you called
-                  ,
+
             ]);
     }
 }
