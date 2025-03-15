@@ -24,11 +24,9 @@ class SupplierResource extends Resource
 
     protected static ?string $label = 'Data Supplier';
 
-    public static function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-                TextInput::make('nama_perusahaan'),
+    public static function getForms(){
+        return [
+            TextInput::make('nama_perusahaan'),
                 TextInput::make('nama')
                     ->label('Nama Kontak')
                     ->required()
@@ -40,7 +38,16 @@ class SupplierResource extends Resource
                     ->type('email'),
                 Textarea::make('alamat')
                     ->columnSpanFull(),
-            ]);
+        ];
+
+    }
+
+    public static function form(Form $form): Form
+    {
+        return $form
+            ->schema(
+                self::getForms()
+            );
     }
 
     public static function table(Table $table): Table
