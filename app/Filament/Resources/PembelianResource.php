@@ -12,12 +12,13 @@ use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\DatePicker;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\PembelianResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PembelianResource\RelationManagers;
-use Filament\Forms\Components\DatePicker;
 
 class PembelianResource extends Resource
 {
@@ -62,7 +63,9 @@ class PembelianResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('supplier.nama_perusahaan')->label('Supplier')->searchable(),
+                TextColumn::make('supplier.nama')->label('Nama Sales'),
+                TextColumn::make('tanggal')->label('Tanggal Pembelian')->date('d F Y'),
             ])
             ->filters([
                 //
