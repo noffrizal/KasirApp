@@ -34,6 +34,9 @@ class BarangResource extends Resource
                 TextInput::make('nama')
                 ->required()
                 ->label('Nama Barang'),
+                TextInput::make('harga')
+                ->required()
+                ->label('Harga Barang'),
                 TextInput::make('stok')
                 ->disabledOn('edit')
                 ->label('Stok Awal Barang'),
@@ -54,6 +57,7 @@ class BarangResource extends Resource
             ->columns([
                 TextColumn::make('kode')->searchable()->label('Kode Barang'),
                 TextColumn::make('nama')->searchable()->label('Nama Barang'),
+                TextColumn::make('harga')->searchable()->label('Harga Barang'),
                 TextColumn::make('stok')->searchable()->label('Stok Awal'),
                 TextColumn::make('satuan')->label('Satuan'),
 
